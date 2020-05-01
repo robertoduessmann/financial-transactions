@@ -1,0 +1,25 @@
+version: '2'
+services:
+  database:
+    image: "postgres:12.2"
+    environment:
+      - POSTGRES_DB=financial
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+  zookeeper:
+    image: "library/zookeeper:3.5.5"
+    ports:
+      - "2181:2181"
+  kafka:
+    image: "confluentinc/cp-kafka:5.3.1"
+    ports:
+      - "29092:29092"
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_LISTENERS=EXTERNAL://localhost:29092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=EXTERNAL:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=EXTERNAL
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+

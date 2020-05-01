@@ -1,4 +1,4 @@
-package com.bank.financialtransactions;
+package com.bank.financial;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

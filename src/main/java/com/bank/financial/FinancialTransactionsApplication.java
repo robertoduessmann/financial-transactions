@@ -1,4 +1,4 @@
-package com.bank.financialtransactions;
+package com.bank.financial;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
