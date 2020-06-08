@@ -21,6 +21,21 @@ mvn spring-boot:run
 $ docker build -t financial-transactions .
 ```
 
+### Running tests
+
+#### Unit and integration tests
+
+```shell script
+mvn test
+```
+
+#### e2e tests
+
+```shell script
+mvn test -Dtest=KarateTests
+```
+PS: the app must be running.
+
 ## Usage
 ### POST /transactions
 ```sh
