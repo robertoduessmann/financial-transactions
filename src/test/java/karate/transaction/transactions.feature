@@ -4,7 +4,7 @@ Background:
     * url baseUrl
     * def genUUID = function(){ return java.util.UUID.randomUUID() + '' }
     * def userId =  callonce genUUID
-    * def transactionRequest = { userId: x, amount: 10 }
+    * def transactionRequest = { userId: '#(userId)', amount: 10 }
 
 Scenario: Create transaction
 

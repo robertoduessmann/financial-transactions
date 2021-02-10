@@ -19,7 +19,7 @@
 
   <properties>
     <java.version>14</java.version>
-    <karate.version>0.9.5</karate.version>
+    <karate.version>0.9.6</karate.version>
   </properties>
 
   <dependencies>
