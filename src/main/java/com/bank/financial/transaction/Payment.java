@@ -51,4 +51,11 @@ public class Payment {
     return amount < 0;
   }
 
+	public Transaction getTransaction() {
+		return transaction;
+	}
+
+	public void setTransaction(Transaction transaction) {
+		this.transaction = transaction;
+	}
 }

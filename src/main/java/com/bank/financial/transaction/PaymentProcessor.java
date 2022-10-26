@@ -1,41 +1,57 @@
 package com.bank.financial.transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentProcessor {
 
-  public static void process() {
-    Payment payment = new Payment();
-    Payment payment2 = new Payment();
-    Payment payment3 = new Payment();
-    List<Payment> payments = List.of(payment, payment2, payment3);
+	public static void process() {
+		Payment payment = new Payment();
+		payment.setAmount(10.0);
+		Payment payment2 = new Payment();
+		payment2.setAmount(20.0);
+		Payment payment3 = new Payment();
+		payment3.setAmount(5.0);
+		Payment payment4 = new Payment();
+		payment3.setAmount(10.0);
 
-    payment.setAmount(10.0);
-    payment2.setAmount(20.0);
-    payment3.setAmount(-5.0);
+		User user = new User();
+		user.setName("Roberto");
+		List<Payment> listofRobertoPaym = List.of(payment, payment2);
+		user.setPayments(listofRobertoPaym);
 
-    Double total = 0.0;
-    for (int i = 0; i < payments.size(); i++) {
-      System.out.println("Is payment negative? " + payments.get(i).isNegative());
-      total = total + payments.get(i).getAmount();
-    }
-    System.out.println("Total is: " + total);
+		User user2 = new User();
+		user2.setName("Vanessa");
+		user2.setPayments(List.of(payment3, payment4));
 
-    User user = new User();
-    user.setName("Roberto");
-    user.setPayments(payments);
+		List<User> users = new ArrayList<>();
+		users.add(user);
+		users.add(user2);
 
-    Payment paymentForVanessa = new Payment();
-    paymentForVanessa.setAmount(100.00);
-    User user2 = new User();
-    user2.setName("Vanessa");
-    user2.setPayments(List.of(paymentForVanessa));
+		findUserWithBiggestTransaction(users);
 
-    Payment paymentFromUser = user.getPayments().get(0);
-  }
+	}
 
-  public static void main(String[] args) {
-    process();
-  }
+	private static void findUserWithBiggestTransaction(List<User> users) {
+		String userWithBiggestTransaction = "";
+		double biggestTransaction = 0.0;
+
+		for (int i = 0; i < users.size(); i++) {
+			User user = users.get(i);
+			for (int j = 0; j < user.getPayments().size(); j++) {
+				Payment payment = user.getPayments().get(j);
+				System.out.println(user.getName() + ":" + payment.getAmount());
+				if(payment.getAmount() > biggestTransaction){
+					userWithBiggestTransaction = user.getName();
+					biggestTransaction = payment.getAmount();
+				}
+			}
+		}
+		System.out.println("The person is: " + userWithBiggestTransaction);
+	}
+
+	public static void main(String[] args) {
+		process();
+	}
 
 }
