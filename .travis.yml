@@ -2,5 +2,3 @@ language: java
 
 jdk:
   - openjdk-ea
-
-script: mvn install && mvn test && docker-compose up && mvn spring run && mvn test -Dtest=KarateTests
